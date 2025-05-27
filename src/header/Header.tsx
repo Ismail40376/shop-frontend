@@ -1,51 +1,73 @@
 // import { NavLink } from 'react-router-dom';
+import { useState } from "react";
+import Modal from "react-modal";
+import { NavLink } from "react-router-dom";
 import s from "./Header.module.scss";
 
-import { NavLink } from "react-router-dom";
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    transform: "translate(-50%, -50%)",
+  },
+};
 
 const Header = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <header className="container">
-      <h1></h1>
-      <nav className={s.nav}>
-        <div className={s.navLinks}>
+    <div>
+      <header className="container">
+        <h1></h1>
+        <nav className={s.nav}>
+          <div className={s.navLinks}>
+            <NavLink to="/logo">
+              <img src="/logo-icon.png" alt="logo" />
+            </NavLink>
+            <NavLink to="/dishes">Men</NavLink>
+            <NavLink to="/orders">Women</NavLink>
+            <NavLink to="/orders">Boys</NavLink>
+            <NavLink to="/orders">Girls</NavLink>
+          </div>
+          <div className={s.navLinks}>
+            <NavLink to="/logo">
+              <img src="/profile-icon.png" alt="logo" />
+            </NavLink>
+            <NavLink to="/logo">
+              <img src="/heart-icon.png" alt="logo" />
+            </NavLink>
+            <NavLink to="/logo">
+              <img src="/cart-icon.png" alt="logo" />
+            </NavLink>
+          </div>
+        </nav>
+        <div className={s["burger-menu"]}>
           <NavLink to="/logo">
             <img src="/logo-icon.png" alt="logo" />
           </NavLink>
-          <NavLink to="/dishes">Men</NavLink>
-          <NavLink to="/orders">Women</NavLink>
-          <NavLink to="/orders">Boys</NavLink>
-          <NavLink to="/orders">Girls</NavLink>
+          <button onClick={() => setIsModalOpen(true)}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
         </div>
-        <div className={s.navLinks}>
-          <NavLink to="/logo">
-            <img src="/profile-icon.png" alt="logo" />
-          </NavLink>
-          <NavLink to="/logo">
-            <img src="/heart-icon.png" alt="logo" />
-          </NavLink>
-          <NavLink to="/logo">
-            <img src="/cart-icon.png" alt="logo" />
-          </NavLink>
-        </div>
-      </nav>
+      </header>
 
-      {/* <div>
-          <label className={s.label}>Image upload</label>
-          <input className={s.input} type="file" onChange={handleFileSubmit} />
-          {fileName && <p className={s.fileName}>Selected file: {fileName}</p>}
-          {img && (
-            <div className={s.imagePreview}>
-              <img src={img} alt="preview" />
+      {isModalOpen && (
+        <div>
+          <Modal isOpen={isModalOpen} style={customStyles} contentLabel="Example Modal">
+            <button onClick={() => setIsModalOpen(false)} className={s.closeIcon}>
+              close
+            </button>
+            <div className={s.modalLinks}>
+              <NavLink to="/Women">Женщины</NavLink>
             </div>
-          )}
+          </Modal>
         </div>
-        <button className={s.saveButton} type="submit">
-          Save
-        </button>
-      </form>
-    </div> */}
-    </header>
+      )}
+    </div>
   );
 };
 
