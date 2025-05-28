@@ -1,0 +1,52 @@
+@use "/src/styles/variables.scss" as *;
+@use "/src/styles/mixins.scss" as *;
+
+.banner {
+  height: 700px;
+  background: url("/banner.png") top / contain;
+  background-repeat: no-repeat;
+  margin-bottom: 120px;
+}
+
+.subtitle {
+  text-transform: uppercase;
+  margin-bottom: 12;
+}
+
+.title {
+  font-size: $display-1-font-size;
+  font-weight: 900;
+  margin-top: 0;
+}
+
+.lighButton {
+  @include button(transparent, $primary, $primary, $primary);
+  margin-right: 24px;
+}
+
+.greenButton {
+  @include button($primary, #145c5d, $primary, $white);
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: $h1-font-size;
+  }
+}
+
+.subtitle {
+  font-size: $h6-font-size;
+}
+
+.wrapper {
+  padding: 10px 0 300px !important;
+}
+
+.banner {
+  height: 350px;
+  background: url("/banner.png") 60% / cover;
+}
+
+.lighButton {
+  margin-bottom: 20px;
+}
