@@ -19,8 +19,8 @@ const Header = () => {
 
   return (
     <div>
+      <div className={s.headerLine}></div>
       <header className="container">
-        <h1></h1>
         <nav className={s.nav}>
           <div className={s.navLinks}>
             <NavLink to="/logo">

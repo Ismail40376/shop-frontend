@@ -64,6 +64,11 @@ body {
   margin: 0 auto;
 }
 
+.divider {
+  height: 19px;
+  background: $primary;
+}
+
 /* Light theme */
 @media (prefers-color-scheme: light) {
   :root {

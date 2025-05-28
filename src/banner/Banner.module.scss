@@ -2,15 +2,18 @@
 @use "/src/styles/mixins.scss" as *;
 
 .banner {
-  height: 700px;
+  height: 800px;
   background: url("/banner.png") top / contain;
   background-repeat: no-repeat;
-  margin-bottom: 120px;
 }
 
+.wrapper {
+  padding: 100px 0 300px !important;
+}
 .subtitle {
   text-transform: uppercase;
-  margin-bottom: 12;
+  margin-top: 0;
+  margin-bottom: 12px;
 }
 
 .title {
@@ -32,21 +35,17 @@
   .title {
     font-size: $h1-font-size;
   }
-}
 
-.subtitle {
-  font-size: $h6-font-size;
-}
+  .subtitle {
+    font-size: $h6-font-size;
+  }
 
-.wrapper {
-  padding: 10px 0 300px !important;
-}
+  .banner {
+    height: 350px;
+    background: url("/banner.png") 60% / cover;
+  }
 
-.banner {
-  height: 350px;
-  background: url("/banner.png") 60% / cover;
-}
-
-.lighButton {
-  margin-bottom: 20px;
+  .lighButton {
+    margin-bottom: 20px;
+  }
 }
