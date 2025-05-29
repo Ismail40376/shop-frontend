@@ -1,4 +1,5 @@
 import Banner from "../banner/Banner";
+import QuickLinks from "../Quick-Links/QuickLinks";
 
 const HomePage = () => {
   return (
@@ -7,6 +8,7 @@ const HomePage = () => {
         <div className="divider"></div>
       </div>
       <Banner />
+      <QuickLinks />
     </div>
   );
 };

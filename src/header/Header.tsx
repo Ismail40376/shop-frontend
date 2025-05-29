@@ -31,6 +31,7 @@ const Header = () => {
             <NavLink to="/orders">Boys</NavLink>
             <NavLink to="/orders">Girls</NavLink>
           </div>
+
           <div className={s.navLinks}>
             <NavLink to="/logo">
               <img src="/profile-icon.png" alt="logo" />
