@@ -16,4 +16,18 @@
   bottom: 110px;
   right: 16px;
   margin: 0;
+  cursor: pointer;
+  border-radius: 50%;
+  border-color: transparent;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
 }
