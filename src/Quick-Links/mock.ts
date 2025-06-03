@@ -8,8 +8,8 @@ export const mockData = [
 
   {
     id: "2",
-    link: "/Boy",
-    imgSrc: "/Boy.png",
+    link: "/Men",
+    imgSrc: "/Men.png",
     title: "Boy’s",
   },
 

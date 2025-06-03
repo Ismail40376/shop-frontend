@@ -1,5 +1,4 @@
 import Banner from "../banner/Banner";
-import Card from "../card/Card";
 
 import QuickLinks from "../Quick-Links/QuickLinks";
 
@@ -11,7 +10,6 @@ const HomePage = () => {
       </div>
       <Banner />
       <QuickLinks />
-      <Card />
     </div>
   );
 };
