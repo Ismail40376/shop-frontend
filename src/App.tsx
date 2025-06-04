@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.scss";
 import Layout from "./layout/Layout";
-import HomePage from "./pages/HomePage";
 import CatalogPage from "./pages/CatalogPage";
+import HomePage from "./pages/HomePage";
 
 function App() {
   return (
@@ -11,6 +11,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="/Catalog" element={<CatalogPage />} />
+          <Route path="/catalog/:category" element={<CatalogPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

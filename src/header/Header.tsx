@@ -1,4 +1,3 @@
-// import { NavLink } from 'react-router-dom';
 import { useState } from "react";
 import Modal from "react-modal";
 import { NavLink } from "react-router-dom";
@@ -16,36 +15,50 @@ const customStyles = {
 
 const Header = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
     <div>
       <div className={s.headerLine}></div>
       <header className="container">
         <nav className={s.nav}>
           <div className={s.navLinks}>
-            <NavLink to="/logo">
+            <NavLink to="/">
               <img src="/logo-icon.png" alt="logo" />
             </NavLink>
-            <NavLink to="/dishes">Men</NavLink>
-            <NavLink to="/orders">Women</NavLink>
-            <NavLink to="/orders">Boys</NavLink>
-            <NavLink to="/orders">Girls</NavLink>
+            <NavLink
+              to="/catalog/women"
+              // className={({ isActive }) => (isActive ? ${s.active} ${s.link} : `${s.link}`)}
+            >
+              Женщины
+            </NavLink>
+            <NavLink
+              to="/catalog/men"
+              // className={({ isActive }) => (isActive ? ${s.active} ${s.link} : `${s.link}`)}
+            >
+              Мужчины
+            </NavLink>
+            <NavLink
+              to="/catalog/kids"
+              // className={({ isActive }) => (isActive ? ${s.active} ${s.link} : `${s.link}`)}
+            >
+              Дети
+            </NavLink>
           </div>
 
           <div className={s.navLinks}>
-            <NavLink to="/logo">
-              <img src="/profile-icon.png" alt="logo" />
+            <NavLink to="/favorites">
+              <img src="/profile-icon.png" alt="profile icon" />
             </NavLink>
-            <NavLink to="/logo">
-              <img src="/heart-icon.png" alt="logo" />
+            <NavLink to="/profile">
+              <img src="/heart-icon.png" alt="heart icon" />
             </NavLink>
-            <NavLink to="/logo">
-              <img src="/cart-icon.png" alt="logo" />
+            <NavLink to="/cart">
+              <img src="/cart-icon.png" alt="cart icon" />
             </NavLink>
           </div>
         </nav>
+
         <div className={s["burger-menu"]}>
-          <NavLink to="/logo">
+          <NavLink to="/">
             <img src="/logo-icon.png" alt="logo" />
           </NavLink>
           <button onClick={() => setIsModalOpen(true)}>
@@ -57,16 +70,40 @@ const Header = () => {
       </header>
 
       {isModalOpen && (
-        <div>
-          <Modal isOpen={isModalOpen} style={customStyles} contentLabel="Example Modal">
-            <button onClick={() => setIsModalOpen(false)} className={s.closeIcon}>
-              close
-            </button>
-            <div className={s.modalLinks}>
-              <NavLink to="/Women">Женщины</NavLink>
-            </div>
-          </Modal>
-        </div>
+        <Modal isOpen={isModalOpen} style={customStyles} contentLabel="Example Modal">
+          <button onClick={() => setIsModalOpen(false)} className={s.closeIcon}>
+            X
+          </button>
+          <div className={s.modalLinks}>
+            <NavLink
+              to="/catalog/women"
+              // className={({ isActive }) => (isActive ? ${s.active} ${s.link} : `${s.link}`)}
+            >
+              Женщины
+            </NavLink>
+            <NavLink
+              to="/catalog/men"
+              // className={({ isActive }) => (isActive ? ${s.active} ${s.link} : `${s.link}`)}
+            >
+              Мужчины
+            </NavLink>
+            <NavLink
+              to="/catalog/kids"
+              // className={({ isActive }) => (isActive ? ${s.active} ${s.link} : `${s.link}`)}
+            >
+              Дети
+            </NavLink>
+            <NavLink to="/favorites">
+              <img src="/profile-icon.png" alt="profile icon" />
+            </NavLink>
+            <NavLink to="/profile">
+              <img src="/heart-icon.png" alt="heart icon" />
+            </NavLink>
+            <NavLink to="/cart">
+              <img src="/cart-icon.png" alt="cart icon" />
+            </NavLink>
+          </div>
+        </Modal>
       )}
     </div>
   );
