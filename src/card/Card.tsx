@@ -25,7 +25,7 @@ const Card: FC<Omit<ProductType, "category_id">> = ({
   };
 
   return (
-    <NavLink className={s.cardWrap} to={`/catalog/${_id}`}>
+    <NavLink className={s.cardWrap} to={`/catalog/product/${_id}`}>
       <Rating rating={rating} />
       <img src={cardImage} alt="womenblouse" />
       <button className={s.heart} onClick={addToFavorite}>

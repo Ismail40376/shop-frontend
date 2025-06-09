@@ -45,10 +45,10 @@ const Header = () => {
           </div>
 
           <div className={s.navLinks}>
-            <NavLink to="/favorites">
+            <NavLink to="/register">
               <img src="/profile-icon.png" alt="profile icon" />
             </NavLink>
-            <NavLink to="/profile">
+            <NavLink to="/favorites">
               <img src="/heart-icon.png" alt="heart icon" />
             </NavLink>
             <NavLink to="/cart">
