@@ -1,5 +1,6 @@
+import axios from "axios";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import s from "./Register.module.scss";
 
 const RegisterPage = () => {
@@ -9,7 +10,37 @@ const RegisterPage = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [inputType, setInputType] = useState("password");
 
-  const inputTypeHandler = () => {
+  const navigate = useNavigate();
+
+  const submitFormHandler = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    try {
+      if (password !== confirmPassword) {
+        alert("Passwords do not match");
+        return;
+      }
+      if (fullname && email && password) {
+        const newUser = {
+          username: fullname,
+          email,
+          password,
+        };
+
+        const response = await axios.post("http://localhost:8000/users", newUser);
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        navigate("/");
+      } else {
+        alert("Please fill in all fields");
+      }
+    } catch (error) {
+      alert("Something went wrong. Please try again later.");
+      console.error(error);
+    }
+  };
+
+  const inputTypeHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     if (inputType === "password") {
       setInputType("text");
     } else {
@@ -17,10 +48,6 @@ const RegisterPage = () => {
     }
   };
 
-  const submitFormHandler = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log(fullname, email, password, confirmPassword);
-  };
   return (
     <div>
       <p className={s.title}>Sign up</p>
@@ -49,12 +76,12 @@ const RegisterPage = () => {
 
         <div style={{ position: "relative" }}>
           <button className={s.eye} onClick={inputTypeHandler}>
-            <img src="closedEye.svg" alt="closedEye" width="16px"></img>
-            <img src="openedEye.svg" alt="openedEye"></img>
+            {inputType === "password" ? (
+              <img src="/closedEye.svg" alt="closedEye" style={{ width: "16px", height: "16px" }} />
+            ) : (
+              <img src="/openedEye.svg" alt="openedEye" style={{ width: "16px", height: "16px" }} />
+            )}
           </button>
-        </div>
-
-        <div>
           <label className={s.label}>Password</label>
           <input
             className={s.input}
@@ -78,7 +105,9 @@ const RegisterPage = () => {
         </button>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <p>Already have an account?</p>
-          <NavLink to="/login">Sign in</NavLink>
+          <NavLink to="/login" className={s.link}>
+            Sign in
+          </NavLink>
         </div>
       </form>
     </div>

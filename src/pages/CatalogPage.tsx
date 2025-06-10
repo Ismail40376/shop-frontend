@@ -8,6 +8,7 @@ import s from "./Catalog.module.scss";
 const CatalogPage = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
   const { category } = useParams<{ category?: string }>();
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -22,6 +23,7 @@ const CatalogPage = () => {
     };
     fetchProducts();
   }, []);
+
   return (
     <div className={s.productWrap}>
       {products.map((product: ProductType) => (
@@ -32,7 +34,6 @@ const CatalogPage = () => {
             title={product.title}
             price={product.price}
             image={product.image}
-            isFavorite={product.isFavorite}
             rating={product.rating}
           />
         </div>
