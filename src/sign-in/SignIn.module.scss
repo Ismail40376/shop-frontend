@@ -41,3 +41,20 @@ form {
 .saveButton {
   @include button($primary, $primary-2, $primary, $white);
 }
+
+.link {
+  color: $primary;
+}
+
+.eye {
+  width: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background: transparent;
+  position: absolute;
+  top: 35px;
+  right: 10px;
+  cursor: pointer;
+}

@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import type { ProductType } from "../../types/Product-type";
+import Rating from "../../rating/Rating";
+import { ProductType } from "../../types/Product-type";
 import s from "./ProductPage.module.scss";
 
 const ProductPage = () => {
@@ -21,7 +22,7 @@ const ProductPage = () => {
     const getProductById = async () => {
       try {
         const response = await axios.get(`http://localhost:8000/products/${id}`);
-        let cardImage = "/womenblouse.png";
+        let cardImage = "/clothes.png";
         const apiURL = "http://localhost:8000";
         if (response.data.image) {
           cardImage = apiURL + "/uploads/" + response.data.image;
@@ -37,17 +38,28 @@ const ProductPage = () => {
 
   return (
     <div className="container">
-      <p>{product.title}</p>
+      <p className={s.title}>{product.title}</p>
       <div className={s.card}>
         <div>
           <img src={product.image}></img>
         </div>
-        <div>
-          <p>{product.price}</p>
-          <p>{product.rating}</p>
-          <button>1</button>
-          <button>add to card</button>
-          <button>favorite</button>
+
+        <div style={{ position: "relative" }}>
+          <p className={s.price}>$ {product.price}</p>
+          <Rating rating={product.rating} />
+          <p>
+            <b>Описание:</b>
+            {product.description}
+          </p>
+
+          <div className={s.btnWrap}>
+            <input type="number" defaultValue={1} className={s.qty} min={1}></input>
+            <button className={s.btnCard}>
+              <img src="/White-cart.png" style={{ width: "15px", marginRight: "10px" }} />
+              add to card
+            </button>
+            <button className={s.btnFavorite}>favorite</button>
+          </div>
         </div>
       </div>
     </div>
