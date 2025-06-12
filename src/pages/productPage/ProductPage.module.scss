@@ -42,3 +42,9 @@
 .btnCard {
   @include button($primary, $primary-2, $primary, $white);
 }
+
+.btnFavorite {
+  @include button($primary, $primary-2, $primary, $white);
+  display: flex;
+  align-items: center;
+}
