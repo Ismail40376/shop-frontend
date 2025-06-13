@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Rating from "../../rating/Rating";
-import { ProductType } from "../../types/Product-type";
+import type { ProductType } from "../../types/Product-type";
 import s from "./ProductPage.module.scss";
 
 const ProductPage = () => {

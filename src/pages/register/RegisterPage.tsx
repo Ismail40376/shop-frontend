@@ -2,6 +2,9 @@ import axios from "axios";
 import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import s from "./Register.module.scss";
+import type { AppDispatch } from "../../../store/index";
+import { useDispatch } from "react-redux";
+import { loginUserAsync } from "../../../store/action/UsersAction";
 
 const RegisterPage = () => {
   const [fullname, setFullname] = useState("");
@@ -11,6 +14,7 @@ const RegisterPage = () => {
   const [inputType, setInputType] = useState("password");
 
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
 
   const submitFormHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,6 +31,7 @@ const RegisterPage = () => {
         };
 
         const response = await axios.post("http://localhost:8000/users", newUser);
+        dispatch(loginUserAsync(newUser));
         localStorage.setItem("token", response.data.token);
         localStorage.setItem("user", JSON.stringify(response.data.user));
         navigate("/");
