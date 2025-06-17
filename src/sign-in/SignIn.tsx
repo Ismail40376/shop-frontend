@@ -85,7 +85,7 @@ const SignInPage = () => {
         </button>
         <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
           <p>Don't have an account?</p>
-          <NavLink to="/login" className={s.link}>
+          <NavLink to="/register" className={s.link}>
             Sign up
           </NavLink>
         </div>
