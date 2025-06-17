@@ -44,7 +44,7 @@
 }
 
 .btnFavorite {
-  @include button($primary, $primary-2, $primary, $white);
+  @include button(transparent, $primary-2, $primary, $primary);
   display: flex;
   align-items: center;
 }
