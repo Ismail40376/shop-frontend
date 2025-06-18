@@ -8,6 +8,7 @@ import { toggleFavoriteAsync } from "../../store/action/UsersAction";
 import Rating from "../rating/Rating";
 import type { ProductType } from "../types/Product-type";
 import s from "./Card.module.scss";
+import bin from "/bin.svg";
 
 const Card: FC<Omit<ProductType, "category">> = ({ _id, rating, title, price, image }) => {
   let cardImage = "/womenblouse.png";
@@ -31,8 +32,21 @@ const Card: FC<Omit<ProductType, "category">> = ({ _id, rating, title, price, im
       <button className={s.heart} onClick={addToFavorite}>
         <img src={isFavorite ? heartFilled : heartEmpty} alt="heart" />
       </button>
-      <p className={s.title}>{title}</p>
-
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          margin: "16px 0 8px",
+        }}
+      >
+        <p className={s.title}>{title}</p>
+        {location.pathname.includes("cart") && (
+          <button className={s.binBtn}>
+            <img src={bin} alt="bin" />
+          </button>
+        )}
+      </div>
       <p className={s.price}>${price}</p>
     </NavLink>
   );

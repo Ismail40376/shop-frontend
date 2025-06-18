@@ -45,7 +45,7 @@ image {
   width: 400;
   font-size: 18px;
   color: $gray-800;
-  margin: 16px 0 8px;
+  margin: 0;
 }
 
 .price {
@@ -58,4 +58,13 @@ image {
 .card {
   display: flex;
   gap: 104px;
+}
+
+.binBtn {
+  border-color: transparent;
+  background: white;
+  image {
+    width: 16px;
+    height: 16px;
+  }
 }
